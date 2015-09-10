@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Test Phone</title>
+  </head>
+  
+  <body>
+  <script src="download/sip-0.7.0.js"></script>
+    <script src="js/SDK.js"></script>
+	<script src="js/ui.js"></script>
+	
+	<div>
+<input type="text" name="FirstName" value="" id="txt_001">
+<input type="button" value="Create" id="login_submit" onclick="Test.CreateUA();"/>
+<input type="button" value="Register" id="login_submit" onclick="Test.RegUA();"/>
+<button type="button" value="Call" onclick="Test.CallUsers();">CAll</button>
+<button type="button" value="Answer" onclick="Test.AnswerCall();">Answer</button>
+<button type="button" value="END" onclick="Test.EndCalls();">END</button>
+
+<p id="demo"></p>
+
+<video id="remoteVideo"></video>
+<video id="localVideo" muted="muted"></video>
+</div>
+  
+  
+  </body>
+
+<html>
