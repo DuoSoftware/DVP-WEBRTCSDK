@@ -151,19 +151,19 @@ function EventListner(session)
 	session.on('failed',function()
 	{
 		SessionRemover(session);
-		UserAgnt.OnDisconnected(null,"failed");
+		UserAgnt.OnDisconnected(null,session.id);
 	
 	});
 	session.on('bye',function()
 	{
 		SessionRemover(session);
-		UserAgnt.OnDisconnected(null,"Bye");
+		UserAgnt.OnDisconnected(null,session.id);
 	
 	});
 	
 	session.on('accepted',function()
 	{
-		UserAgnt.OnConnected(null,"Accepted");
+		UserAgnt.OnConnected(null,session.id);
 	
 	});
 	
@@ -183,7 +183,18 @@ function SessionRemover(session)
 
 }
 
+function ClickToCall(extension,company,tenant,callback)
+{
 
+CallUser(extension,function(err,res)
+{
+
+callback(err,res);
+
+});
+
+
+}
 
 
 
