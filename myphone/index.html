@@ -17,8 +17,9 @@
     <td>Username   <input type="text" name="FirstName" value="" id="txt_usr"></td>
     <td>Password   <input type="text" name="Password" value="" id="txt_pwd"></td> 
     <td>WsServer   <input type="text" name="Wsserver" value="" id="txt_ws"></td>
-	<td ><input type="button" value="Create" id="login_submit" onclick="Test.CreateUA();"/></td>
-	<td ><input type="button" value="Register" id="login_submit" onclick="Test.RegUA();"/></td>
+	<td ><input type="button" value="Create" id="login_submit" onclick="Test.CreateUA()"/></td>
+      <td ><input type="button" value="Register" id="login_submit" onclick="Test.RegUA()"/></td>
+      <input type="button" class="btn btn-danger" id="btnUnRegister" value="LogOut" onclick="    Test.CreateUA()" >
 	<td></td>
 	<td height = '110px' ></td>
 	
@@ -34,8 +35,8 @@
 Dial User here <input type="text" name="Caller" value="" id="txt_calluser">
 
 
-<button type="button" value="Call" onclick="Test.CallUsers(True);">Call</button>
-<button type="button" value="Answer" onclick="Test.AnswerCall(True);">Answer</button>
+<button type="button" value="Call" onclick="Test.CallUsers('true');">Call</button>
+<button type="button" value="Answer" onclick="Test.AnswerCall('true');">Answer</button>
 <button type="button" value="END" onclick="Test.EndCalls();">END</button>
 
 <p id="demo"></p>

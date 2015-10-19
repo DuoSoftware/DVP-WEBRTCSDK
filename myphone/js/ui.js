@@ -1,13 +1,9 @@
 
-
-var SID =      document.getElementById('txt_001');
-var usr=       document.getElementById('txt_usr').value;
-var pwd=       document.getElementById('txt_pwd').value;
-var ws=        document.getElementById('txt_ws').value;
-
-var Test=
+var Test =
 {
 
+
+    
 	OnConnected:function(err,res)
 	{
 		alert("Call connected.....");
@@ -20,22 +16,18 @@ var Test=
 	{
 		alert("Incomming call......");
 	//AnswerCall(res);
-		document.getElementById("txt_001").value=res;
+		document.getElementById("txt_calluser").value=res;
 	},
 
 
-	CreateUA:function ()
-	{
+	CreateUA: function () {
+        alert("123");
+        ConfigAgent(document.getElementById('txt_usr').value, document.getElementById('txt_pwd').value, document.getElementById('txt_ws').value, Test.OnConnected, Test.OnDisconnected, Test.OnIncomingCall, function (e, r) {
+            alert(e);
+            alert(r);
 
-		ConfigAgent(usr,pwd,ws,Test.OnConnected,Test.OnDisconnected,Test.OnIncomingCall,function(e,r)
-		{
-			alert(e);
-			alert(r);
-
-		});
-
-
-	},
+        });
+    },
 
 	RegUA:function ()
 	{
@@ -52,13 +44,13 @@ var Test=
 
 	CallUsers:function (VidSt)
 	{
-		CallUser(SID.value,VidSt,function(e,r)
+		CallUser(document.getElementById('txt_calluser').value,VidSt,function(e,r)
 		{
 
 			alert(e);
 			alert(r);
 
-			SID.value = r;
+			document.getElementById('txt_calluser').value = r;
 
 
 		});
@@ -68,7 +60,7 @@ var Test=
 	EndCalls:function()
 	{
 
-		DisconnectCall(SID.value,function(err,res)
+		DisconnectCall(document.getElementById('txt_calluser').value,function(err,res)
 		{
 			alert(res);
 
@@ -78,7 +70,7 @@ var Test=
 	},
 	AnswerCall:function(VidSt)
 	{
-		var res=AnswerCall(SID.value,VidSt);
+		var res=AnswerCall(document.getElementById('txt_calluser').value,VidSt);
 
 		alert(res);
 	}
