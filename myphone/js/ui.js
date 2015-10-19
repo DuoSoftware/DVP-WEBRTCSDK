@@ -21,10 +21,10 @@ var Test =
 
 
 	CreateUA: function () {
-        alert("123");
+        
         ConfigAgent(document.getElementById('txt_usr').value, document.getElementById('txt_pwd').value, document.getElementById('txt_ws').value, Test.OnConnected, Test.OnDisconnected, Test.OnIncomingCall, function (e, r) {
-            alert(e);
-            alert(r);
+            alert("error "+e);
+            alert("response "+r);
 
         });
     },
@@ -34,8 +34,8 @@ var Test =
 
 		RegisterUser(function(e,r)
 		{
-			alert(e);
-			alert(r);
+			alert("error "+e);
+            alert("response "+r);
 		});
 
 
@@ -47,8 +47,8 @@ var Test =
 		CallUser(document.getElementById('txt_calluser').value,VidSt,function(e,r)
 		{
 
-			alert(e);
-			alert(r);
+			alert("error "+e);
+            alert("response "+r);
 
 			document.getElementById('txt_calluser').value = r;
 
@@ -62,7 +62,7 @@ var Test =
 
 		DisconnectCall(document.getElementById('txt_calluser').value,function(err,res)
 		{
-			alert(res);
+			alert("CallEnding "+res);
 
 
 		});
@@ -70,9 +70,9 @@ var Test =
 	},
 	AnswerCall:function(VidSt)
 	{
-		var res=AnswerCall(document.getElementById('txt_calluser').value,VidSt);
+		var res=AnswerCall(document.getElementById('txt_calluser').value,VidSt,'remoteVideo','localVideo');
 
-		alert(res);
+		alert("Call Answering "+res);
 	}
 
 

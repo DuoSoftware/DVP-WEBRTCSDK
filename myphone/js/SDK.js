@@ -8,7 +8,7 @@ function ConfigAgent(username,password,domain, onConnected, onDisconnected, onIn
 {
 
 var uri=username.concat("@",domain);
-var ws="ws://"+domain+":5066";
+var ws="ws://"+domain;
 
 	  userAgent = new SIP.UA({
 	  uri: uri,
@@ -59,7 +59,7 @@ function RegisterUser(callback)
   });
 }
 
-function AnswerCall(SessionID,VideoSt)
+function AnswerCall(SessionID,VideoSt,RemoteVidID,LocalVidID)
 {
 
  var session = Sessions[SessionID];
@@ -73,8 +73,8 @@ function AnswerCall(SessionID,VideoSt)
 			video: VideoSt
 		  },
 			  render: {
-				remote: document.getElementById('remoteVideo'),
-				local: document.getElementById('localVideo')
+				remote: document.getElementById(RemoteVidID),
+				local: document.getElementById(LocalVidID)
 				}
 		}
 	  });
@@ -87,7 +87,7 @@ function AnswerCall(SessionID,VideoSt)
 	 
 	 }
 
- /*
+ 
 var session = userAgent.invite(uri, {
     media: {
       constraints: {
@@ -110,7 +110,7 @@ var session = userAgent.invite(uri, {
 
 }
 
-function CallUser(uri,videoSt,callback)
+function CallUser(uri,videoSt,RemoteVidID,LocalVidID,callback)
 {
 
 		var options = {
@@ -120,8 +120,8 @@ function CallUser(uri,videoSt,callback)
 			video: videoSt
 			},
 		  render: {
-            remote: document.getElementById('remoteVideo'),
-            local: document.getElementById('localVideo')
+            remote: document.getElementById(RemoteVidID),
+            local: document.getElementById(LocalVidID)
 			}
 		}
 		}
