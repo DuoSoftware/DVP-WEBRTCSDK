@@ -1,6 +1,9 @@
 
 
 var SID =      document.getElementById('txt_001');
+var usr=       document.getElementById('txt_usr').value;
+var pwd=       document.getElementById('txt_pwd').value;
+var ws=        document.getElementById('txt_ws').value;
 
 var Test=
 {
@@ -24,7 +27,7 @@ var Test=
 	CreateUA:function ()
 	{
 
-		ConfigAgent('user1','12345','104.131.105.163',Test.OnConnected,Test.OnDisconnected,Test.OnIncomingCall,function(e,r)
+		ConfigAgent(usr,pwd,ws,Test.OnConnected,Test.OnDisconnected,Test.OnIncomingCall,function(e,r)
 		{
 			alert(e);
 			alert(r);
@@ -49,13 +52,13 @@ var Test=
 
 	CallUsers:function (VidSt)
 	{
-		CallUser('user2',VidSt,function(e,r)
+		CallUser(SID.value,VidSt,function(e,r)
 		{
 
 			alert(e);
 			alert(r);
 
-			document.getElementById("txt_001").value = r;
+			SID.value = r;
 
 
 		});
@@ -65,7 +68,7 @@ var Test=
 	EndCalls:function()
 	{
 
-		DisconnectCall(document.getElementById("txt_001").value,function(err,res)
+		DisconnectCall(SID.value,function(err,res)
 		{
 			alert(res);
 
@@ -75,7 +78,7 @@ var Test=
 	},
 	AnswerCall:function(VidSt)
 	{
-		var res=AnswerCall(document.getElementById("txt_001").value,VidSt);
+		var res=AnswerCall(SID.value,VidSt);
 
 		alert(res);
 	}
