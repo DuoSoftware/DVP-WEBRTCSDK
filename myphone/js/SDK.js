@@ -59,7 +59,7 @@ function RegisterUser(callback)
   });
 }
 
-function AnswerCall(SessionID)
+function AnswerCall(SessionID,VideoSt)
 {
 
  var session = Sessions[SessionID];
@@ -70,7 +70,7 @@ function AnswerCall(SessionID)
 		media: {
 		  constraints: {
 			audio: true,
-			video: false
+			video: VideoSt
 		  },
 			  render: {
 				remote: document.getElementById('remoteVideo'),
@@ -110,14 +110,14 @@ var session = userAgent.invite(uri, {
 
 }
 
-function CallUser(uri,callback)
+function CallUser(uri,videoSt,callback)
 {
 
 		var options = {
 		media: {
 		  constraints: {
 			audio: true,
-			video: false
+			video: videoSt
 			},
 		  render: {
             remote: document.getElementById('remoteVideo'),

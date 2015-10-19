@@ -47,9 +47,9 @@ var Test=
 	},
 
 
-	CallUsers:function ()
+	CallUsers:function (VidSt)
 	{
-		CallUser('user2',function(e,r)
+		CallUser('user2',VidSt,function(e,r)
 		{
 
 			alert(e);
@@ -73,9 +73,9 @@ var Test=
 		});
 
 	},
-	AnswerCall:function()
+	AnswerCall:function(VidSt)
 	{
-		var res=AnswerCall(document.getElementById("txt_001").value);
+		var res=AnswerCall(document.getElementById("txt_001").value,VidSt);
 
 		alert(res);
 	}
