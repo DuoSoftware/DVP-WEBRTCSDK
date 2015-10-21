@@ -88,25 +88,7 @@ function AnswerCall(SessionID,VideoSt,RemoteVidID,LocalVidID)
 	 }
 
  
-var session = userAgent.invite(uri, {
-    media: {
-      constraints: {
-        audio: true,
-        video: false
-      }
-    }
-  }); 
-  
-  session.on('accepted', function (session) {
-    
-	if(UserAgnt[session.uuid])
-	{
-		session.mediaHandler.render();
-		UserAgnt.OnConnected(session.uuid);
-	}
-	
-  });
-  */
+
 
 }
 
@@ -9574,13 +9556,13 @@ UA.prototype.loadConfig = function(configuration) {
       case 'uri':
       case 'registrarServer':
       case 'mediaHandlerFactory':
-        this.logger.log('· ' + parameter + ': ' + settings[parameter]);
+        this.logger.log('Â· ' + parameter + ': ' + settings[parameter]);
         break;
       case 'password':
-        this.logger.log('· ' + parameter + ': ' + 'NOT SHOWN');
+        this.logger.log('Â· ' + parameter + ': ' + 'NOT SHOWN');
         break;
       default:
-        this.logger.log('· ' + parameter + ': ' + JSON.stringify(settings[parameter]));
+        this.logger.log('Â· ' + parameter + ': ' + JSON.stringify(settings[parameter]));
     }
   }
 
