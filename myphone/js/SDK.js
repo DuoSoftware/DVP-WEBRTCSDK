@@ -4,6 +4,7 @@ var userAgent;
 
 var Sessions={};
 
+
 function ConfigAgent(username,password,domain, onConnected, onDisconnected, onIncomingCall, callback)
 {
 
@@ -15,6 +16,7 @@ var ws="ws://"+domain;
 	  wsServers: [ws],
 	  authorizationUser: username,
 	  password: password
+	
 	});
 
 	UserAgnt.OnConnected = onConnected;
@@ -36,7 +38,10 @@ var ws="ws://"+domain;
 		
 	  });
 
+	  
 }
+
+
 
 function RegisterUser(callback)
 {
@@ -88,7 +93,6 @@ function AnswerCall(SessionID,VideoSt,RemoteVidID,LocalVidID)
 	 }
 
  
-
 
 }
 
@@ -174,13 +178,14 @@ CallUser(extension,function(err,res)
 callback(err,res);
 
 });
-
-
 }
 
 
-//////////////////////////////////////////////////////API////////////////////////////////////////////////////////////////////////////
 
+
+
+
+//////////////////////////////////////////////////////API////////////////////////////////////////////////////////////////////////////
 
 
 
