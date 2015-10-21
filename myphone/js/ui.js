@@ -44,7 +44,7 @@ var Test =
 
 	CallUsers:function (VidSt)
 	{
-		CallUser(document.getElementById('txt_calluser').value,VidSt,function(e,r)
+		CallUser(document.getElementById('txt_calluser').value,VidSt,'remoteVideo','localVideo',function(e,r)
 		{
 
 			alert(e);
@@ -70,7 +70,7 @@ var Test =
 	},
 	AnswerCall:function(VidSt)
 	{
-		var res=AnswerCall(document.getElementById('txt_calluser').value,VidSt);
+		var res=AnswerCall(document.getElementById('txt_calluser').value,VidSt,'remoteVideo','localVideo');
 
 		alert(res);
 	}
