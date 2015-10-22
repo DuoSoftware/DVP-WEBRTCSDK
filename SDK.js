@@ -181,6 +181,13 @@ callback(err,res);
 }
 
 
+function SendDTMF(SessionID,val)
+{
+  var session = Sessions[SessionID];
+  session.dtmf(val);
+}
+
+
 
 
 
