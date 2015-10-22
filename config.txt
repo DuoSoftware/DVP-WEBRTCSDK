@@ -1,7 +1,0 @@
-
-function phone_init()
-{
-
-
-
-}
