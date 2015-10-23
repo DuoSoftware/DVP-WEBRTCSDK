@@ -12,7 +12,7 @@ This will connect user to the server, by default user is registered on connectio
     * domain :  WebServer IP+port ex:- 45.55.163.131:5066
     * onConnected : Fires on Connection stablishment events 
     * onDisconnected : Fires on Disconnection events 
-    * onDisconnected : Fires on Incomming call events 
+    * onIncomingCall : Fires on Incoming call events 
     * callback : contains two params (error,response) ex:- callback(error,response)
 ##### ** onConnected,onDisconnected,onDisconnected functions should declares on UI script and these names should be as above.
 
@@ -46,16 +46,16 @@ This will connect user to the server, by default user is registered on connectio
 ##### Method : 
 ###### AnswerCall(SessionID,VideoSt,RemoteVidID,LocalVidID)
 
-In a scenario of Incomming call , have to pass above params to answer it.
+In a scenario of Incoming call , have to pass above params to answer it.
 
-    - SessionID : ID of genarated session for the new incomming  call 
+    - SessionID : ID of genarated session for the new incoming  call 
     * videoSt : Video status (true/false)
     * RemoteVidID :  Callee's video displaying element's ID
     * LocalVidID : caller's video displaying element's ID
     
     
 ##### ** Returns true on success false on fail
-##### ** In scenario of inncomming call, onIncomingCall event mentioned above will recieve the sessionID
+##### ** In scenario of inncoming call, onIncomingCall event mentioned above will recieve a object conteining SeesionID as "id" and caller's uri as "user" 
 
 
 ### Disconnect a call
@@ -65,7 +65,7 @@ In a scenario of Incomming call , have to pass above params to answer it.
 
 Uses when user want to disconnect a call
 
-    * SessionID : ID of genarated session for ongoing or incomming call 
+    * SessionID : ID of genarated session for ongoing or incoming call 
     
 
 ### Remove a session 
