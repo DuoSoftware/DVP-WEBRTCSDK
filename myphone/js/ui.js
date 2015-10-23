@@ -73,6 +73,7 @@ var Test =
 		var res=AnswerCall(document.getElementById('txt_calluser').value,VidSt,'remoteVideo','localVideo');
 
 		alert(res);
+
 	}
 
 
