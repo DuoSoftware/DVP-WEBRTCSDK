@@ -16,7 +16,8 @@ var Test =
 	{
 		alert("Incomming call......");
 	//AnswerCall(res);
-		document.getElementById("txt_calluser").value=res;
+		document.getElementById("txt_calluser").value=res.id;
+		alert("Caller "+res.user);
 	},
 
 
@@ -73,6 +74,33 @@ var Test =
 		var res=AnswerCall(document.getElementById('txt_calluser').value,VidSt,'remoteVideo','localVideo');
 
 		alert(res);
+	},
+	
+	HoldCall:function()
+	{
+	alert("HOLD PRESSED");
+	var remote=document.getElementById('remoteVideo');
+	var local=document.getElementById('localVideo');
+	alert("Remote is "+remote.muted);
+	remote.pause();
+	local.pause();
+	local.muted=true;
+	remote.muted=true;
+	
+	
+	},
+	UnHoldCall:function()
+	{
+	alert("HOLD PRESSED");
+	var remote=document.getElementById('remoteVideo');
+	var local=document.getElementById('localVideo');
+	alert("Remote is "+remote.muted);
+	remote.play();
+	local.play();
+	local.muted=false;
+	remote.muted=false;
+	
+	
 	}
 
 

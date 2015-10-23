@@ -32,7 +32,9 @@ var ws="ws://"+domain;
 		
 		
 		Sessions[session.id] = session;
-		UserAgnt.OnIncomingCall(null,session.id);
+		alert(session.remoteIdentity.uri);
+		var SessionData = {id:session.id, user:session.remoteIdentity.uri};
+		UserAgnt.OnIncomingCall(null,SessionData);
 		EventListner(session);
 
 		
@@ -109,7 +111,10 @@ function CallUser(uri,videoSt,RemoteVidID,LocalVidID,callback)
             remote: document.getElementById(RemoteVidID),
             local: document.getElementById(LocalVidID)
 			}
-		}
+		},
+		params: {
+          to_displayName: UserAgnt.uri
+        }
 		}
 
 	var session = userAgent.invite(uri, options); 
