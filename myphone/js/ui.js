@@ -18,6 +18,7 @@ var Test =
 	//AnswerCall(res);
 		document.getElementById("txt_calluser").value=res.id;
 		alert("Caller "+res.user);
+		console.log("Incoming call ",res.user)
 	},
 
 

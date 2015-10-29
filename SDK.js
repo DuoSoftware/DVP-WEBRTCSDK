@@ -33,7 +33,7 @@ var ws="ws://"+domain;
 		
 		Sessions[session.id] = session;
 		alert(session.remoteIdentity.uri);
-		var SessionData = {id:session.id, user:session.remoteIdentity.uri};
+		var SessionData = {id:session.id, user:session.remoteIdentity.uri.user};
 		UserAgnt.OnIncomingCall(null,SessionData);
 		EventListner(session);
 
