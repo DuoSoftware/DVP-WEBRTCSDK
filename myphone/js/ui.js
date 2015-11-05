@@ -14,7 +14,7 @@ var Test =
 	OnDisconnected:function (err,res)
 	{
 		//alert("Call disconnected ......");
-		document.getElementById("txtCallStatus").innerHTML ="Call Disconnected";
+		document.getElementById("txtCallStatus").innerHTML ="Call Disconnected and Ready to Call";
 	},
 	OnIncomingCall:function (err,res)
 	{
@@ -92,7 +92,7 @@ var Test =
 
 		DisconnectCall(document.getElementById('txt_calluser').value,function(err,res)
 		{
-			document.getElementById("txtCallStatus").innerHTML ="Call Ended";
+			document.getElementById("txtCallStatus").innerHTML ="Call Ended and Ready to Call";
 
 
 		});
