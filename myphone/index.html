@@ -11,19 +11,43 @@
 	<div id="reg">
 	<table style="width:100%">
   <tr>
-    
+     <td height =20px>
+	 <div id=txtConnection >Disconnected</div></td>
+	 <td height =20px>
+	 <div id=txtReg >Unegisterd</div></td>
+	 <td height =20px>
+	 <div id=txtCallStatus >CallStatus</div></td>
+	 
+	 
+	 
+  <tr>
+    <td height =20px></td>
+  </tr>
+    <td>Username   <input type="text" name="FirstName" value="" id="txt_usr"></td>
   </tr>
   <tr>
-    <td>Username   <input type="text" name="FirstName" value="" id="txt_usr"></td>
-    <td>Password   <input type="text" name="Password" value="" id="txt_pwd"></td> 
-    <td>WsServer   <input type="text" name="Wsserver" value="" id="txt_ws"></td>
-	<td ><input type="button" value="Create" id="login_submit" onclick="Test.CreateUA()"/></td>
-      <td ><input type="button" value="Register" id="login_submit" onclick="Test.RegUA()"/></td>
-      <input type="button" class="btn btn-danger" id="btnUnRegister" value="LogOut" onclick="    Test.CreateUA()" >
-	<td></td>
-	<td height = '110px' ></td>
-	
+    <td height =20px></td>
   </tr>
+  <tr>
+  <td>Password    <input type="text" name="Password" value="" id="txt_pwd"></td> 
+  </tr>
+  <tr>
+    <td height =20px></td>
+  </tr>
+  <tr>
+  <td>WsServer   <input type="text" name="Wsserver" value="" id="txt_ws"></td>
+  </tr>
+  <tr>
+    <td height =20px></td>
+  </tr>
+  
+  <td ><input type="button" value="Create" id="login_submit" onclick="Test.CreateUA()"/> <input type="button" value="Register" id="login_reg" onclick="Test.RegUA()"/></td>
+      
+      
+	
+	<td height = '110px' ></td>
+  </td>
+  
 </table>
 	</div>
 	<div>

@@ -15,7 +15,8 @@ var ws="ws://"+domain;
 	  uri: uri,
 	  wsServers: [ws],
 	  authorizationUser: username,
-	  password: password
+	  password: password,
+	  register: false
 	
 	});
 
@@ -23,16 +24,44 @@ var ws="ws://"+domain;
 	UserAgnt.OnDisconnected = onDisconnected;
 	UserAgnt.OnIncomingCall = onIncomingCall;
 
+	
+	
 	userAgent.on('connected', function () {
 		
-		callback(null,'Connected');
+		if(userAgent.isConnected)
+		{
+			console.log("Connection stablishing...");
+		
+			RegisterUser(function(errReg,resReg)
+			{
+				if(errReg)
+					{
+					    console.log("Registration failed : ",errReg);
+						callback(errReg,undefined);
+					}
+				else
+					{
+						console.log("User status : "+resReg);
+						callback(undefined,resReg);
+					}
+		
+			});
+		
+		//callback(null,'Connected');
+		}
+		else
+		{
+		console.log("Not Connected");
+		callback('rejected',undefined);
+		}
+		
 	  });
   
 	userAgent.on('invite', function (session) {
 		
 		
 		Sessions[session.id] = session;
-		alert(session.remoteIdentity.uri);
+		//alert(session.remoteIdentity.uri);
 		var SessionData = {id:session.id, user:session.remoteIdentity.uri.user};
 		UserAgnt.OnIncomingCall(null,SessionData);
 		EventListner(session);
@@ -49,6 +78,7 @@ function RegisterUser(callback)
 {
    if(userAgent.isRegistered())
     {
+	
 		userAgent.unregister();
 
     }
@@ -64,6 +94,12 @@ function RegisterUser(callback)
   userAgent.on('unregistered', function () {
 		callback(null,'unregistered');
   });
+  
+  userAgent.on('registrationFailed', function (cause) {
+		
+		callback(cause,null);
+	  });
+  
 }
 
 function AnswerCall(SessionID,VideoSt,RemoteVidID,LocalVidID)
@@ -155,6 +191,7 @@ function EventListner(session)
 	session.on('accepted',function()
 	{
 		UserAgnt.OnConnected(null,session.id);
+		alert("Call Accepted");
 	
 	});
 	

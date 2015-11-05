@@ -6,27 +6,51 @@ var Test =
     
 	OnConnected:function(err,res)
 	{
-		alert("Call connected.....");
+		//alert("Call connected event.....");
+		document.getElementById("txtCallStatus").innerHTML ="Call Stablished";
+		
+		
 	},
 	OnDisconnected:function (err,res)
 	{
-		alert("Call disconnected ......");
+		//alert("Call disconnected ......");
+		document.getElementById("txtCallStatus").innerHTML ="Call Disconnected";
 	},
 	OnIncomingCall:function (err,res)
 	{
-		alert("Incomming call......");
+		//alert("Incomming call......");
+		document.getElementById("txtCallStatus").innerHTML ="Incoming Call form "+res.user;
 	//AnswerCall(res);
 		document.getElementById("txt_calluser").value=res.id;
-		alert("Caller "+res.user);
-		console.log("Incoming call ",res.user)
+		//alert("Caller "+res.user);
+		//console.log("Incoming call ",res.user)
 	},
 
 
 	CreateUA: function () {
-        alert("123");
+        //alert("123");
         ConfigAgent(document.getElementById('txt_usr').value, document.getElementById('txt_pwd').value, document.getElementById('txt_ws').value, Test.OnConnected, Test.OnDisconnected, Test.OnIncomingCall, function (e, r) {
-            alert(e);
-            alert(r);
+            //alert(e);
+            //alert(r);
+			if(e==null)
+			{
+			document.getElementById("txtConnection").innerHTML ="Connected";
+			document.getElementById("txtReg").innerHTML =r;
+				if(r=="registered")
+				{
+					document.getElementById("login_reg").value="Unregister";
+			
+				}
+				else
+				{
+					document.getElementById("login_reg").value="Register";
+				}
+			}
+			else
+			{
+				document.getElementById("txtConnection").innerHTML ="Connection error/ Registration failed";
+			}
+			
 
         });
     },
@@ -36,8 +60,10 @@ var Test =
 
 		RegisterUser(function(e,r)
 		{
-			alert(e);
-			alert(r);
+		
+		document.getElementById("txtReg").innerHTML =r;
+			//alert(e);
+			//alert(r);
 		});
 
 
@@ -49,10 +75,12 @@ var Test =
 		CallUser(document.getElementById('txt_calluser').value,VidSt,'remoteVideo','localVideo',function(e,r)
 		{
 
-			alert(e);
-			alert(r);
-
+			//alert(e);
+			//alert(r);
+			var x=document.getElementById('txt_calluser').value;
 			document.getElementById('txt_calluser').value = r;
+
+			document.getElementById('txtCallStatus').innerHTML = "Calling "+x;
 
 
 		});
@@ -64,7 +92,7 @@ var Test =
 
 		DisconnectCall(document.getElementById('txt_calluser').value,function(err,res)
 		{
-			alert(res);
+			document.getElementById("txtCallStatus").innerHTML ="Call Ended";
 
 
 		});
@@ -74,7 +102,8 @@ var Test =
 	{
 		var res=AnswerCall(document.getElementById('txt_calluser').value,VidSt,'remoteVideo','localVideo');
 
-		alert(res);
+		//alert(res);
+		document.getElementById("txtCallStatus").innerHTML ="Answered";
 	},
 	
 	HoldCall:function()
