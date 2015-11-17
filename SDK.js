@@ -153,9 +153,13 @@ function CallUser(uri,videoSt,RemoteVidID,LocalVidID,callback)
         }
 		}
 
+		console.log("Calling session ");
 	var session = userAgent.invite(uri, options); 
+	console.log("End session "+session.id);
+	
 	  
 	Sessions[session.id] = session;
+	console.log("Calling session "+session.id);
 	EventListner(session);
 	callback(null,session.id);
   
@@ -165,9 +169,19 @@ function CallUser(uri,videoSt,RemoteVidID,LocalVidID,callback)
 
 function DisconnectCall(sessionID)
 {
-
+console.log("Incomming session "+sessionID);
 	var session=Sessions[sessionID];
-	session.bye();
+	console.log("Got session "+session.id);
+	//session.bye();
+	 if (!session) {
+      return;
+    } else if (session.startTime) { // Connected
+      session.bye();
+    } else if (session.reject) { // Incoming
+      session.reject();
+    } else if (session.cancel) { // Outbound
+      session.cancel();
+    }
 	
 
 
@@ -191,7 +205,7 @@ function EventListner(session)
 	session.on('accepted',function()
 	{
 		UserAgnt.OnConnected(null,session.id);
-		alert("Call Accepted");
+		//alert("Call Accepted");
 	
 	});
 	
