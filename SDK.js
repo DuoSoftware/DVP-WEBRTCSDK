@@ -171,9 +171,10 @@ function DisconnectCall(sessionID)
 {
 console.log("Incomming session "+sessionID);
 	var session=Sessions[sessionID];
-	console.log("Got session "+session.id);
+	
 	//session.bye();
 	 if (!session) {
+	 console.log("Got session "+session.id);
       return;
     } else if (session.startTime) { // Connected
       session.bye();
