@@ -174,7 +174,7 @@ console.log("Incomming session "+sessionID);
 	
 	//session.bye();
 	 if (!session) {
-	 console.log("Got session "+session.id);
+	 console.log("No session found");
       return;
     } else if (session.startTime) { // Connected
       session.bye();
@@ -190,16 +190,58 @@ console.log("Incomming session "+sessionID);
 	
 function EventListner(session)
 {
-	session.on('failed',function()
+	session.on('failed',function(response, cause)
 	{
+		var resObj=
+		 {
+		 Res:response, 
+		 ResCode:cause,
+		 Action:"Session failed",
+		 SID:session.id
+		 };
+		 
 		SessionRemover(session);
-		UserAgnt.OnDisconnected(null,session.id);
+		UserAgnt.OnDisconnected(null,resObj);
 	
 	});
-	session.on('bye',function()
+	session.on('rejected', function (response, cause)
 	{
+	var resObj=
+		 {
+		 Res:response, 
+		 ResCode:cause,
+		 Action:"Incoming call rejected",
+		 SID:session.id
+		 };
 		SessionRemover(session);
-		UserAgnt.OnDisconnected(null,session.id);
+		UserAgnt.OnDisconnected(null,resObj);
+	
+	});
+	session.on('bye',function(request)
+	{
+	var resObj=
+		 {
+		 Res:request, 
+		 ResCode:"",
+		 Action:"Disconnected after call connected",
+		 SID:session.id
+		 };
+		SessionRemover(session);
+		UserAgnt.OnDisconnected(null,resObj);
+	
+	});
+	
+	session.on('cancle',function()
+	{
+	var resObj=
+		 {
+		 Res: "Outbound reject", 
+		 ResCode:"",
+		 Action:"Outbound session cancellation",
+		 SID:session.id
+		 };
+		SessionRemover(session);
+		UserAgnt.OnDisconnected(null,resObj);
 	
 	});
 	

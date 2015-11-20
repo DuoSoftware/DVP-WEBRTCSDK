@@ -15,6 +15,15 @@ var Test =
 	{
 		//alert("Call disconnected ......");
 		document.getElementById("txtCallStatus").innerHTML ="Call Disconnected and Ready to Call";
+		console.log("Disconnection fired ...");
+		console.log("Disconnected Response : "+res.Res);
+		console.log("Disconnected ResponseCode : "+res.ResCode);
+		console.log("Disconnected Action : "+res.Action);
+		console.log("Disconnected SessionID : "+res.SID);
+		//console.log("Disconnection reason "+res.response);
+		//console.log("Disconnected data "+res.Action);
+		//console.log("Disconnected reason code "+res.ResCode);
+		
 	},
 	OnIncomingCall:function (err,res)
 	{
