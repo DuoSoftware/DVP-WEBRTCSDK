@@ -231,7 +231,7 @@ function EventListner(session)
 	
 	});
 	
-	session.on('cancle',function()
+	session.on('cancel',function()
 	{
 	var resObj=
 		 {
