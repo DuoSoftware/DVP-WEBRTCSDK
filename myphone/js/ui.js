@@ -15,7 +15,7 @@ var Test =
 	{
 		//alert("Call disconnected ......");
 		document.getElementById("txtCallStatus").innerHTML ="Call Disconnected and Ready to Call";
-		console.log("Disconnection fired ...");
+		console.log("Call Disconnected");
 		console.log("Disconnected Response : "+res.Res);
 		console.log("Disconnected ResponseCode : "+res.ResCode);
 		console.log("Disconnected Action : "+res.Action);
