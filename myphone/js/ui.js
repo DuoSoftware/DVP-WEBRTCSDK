@@ -38,7 +38,7 @@ var Test =
 
 	CreateUA: function () {
         //alert("123");
-        ConfigAgent(document.getElementById('txt_usr').value, document.getElementById('txt_pwd').value, document.getElementById('txt_ws').value, Test.OnConnected, Test.OnDisconnected, Test.OnIncomingCall, function (e, r) {
+        ConfigAgent(document.getElementById('txt_usr').value, document.getElementById('txt_pwd').value, document.getElementById('txt_ws').value,document.getElementById('slct_ws').value, Test.OnConnected, Test.OnDisconnected, Test.OnIncomingCall, function (e, r) {
             //alert(e);
             //alert(r);
 			if(e==null)

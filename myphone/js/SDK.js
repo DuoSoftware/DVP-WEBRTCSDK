@@ -5,11 +5,12 @@ var userAgent;
 var Sessions={};
 
 
-function ConfigAgent(username,password,domain, onConnected, onDisconnected, onIncomingCall, callback)
+function ConfigAgent(username,password,domain,ws_st,onConnected, onDisconnected, onIncomingCall, callback)
 {
 
 var uri=username.concat("@",domain);
-var ws="ws://"+domain;
+var ws=ws_st+"://"+domain;
+alert(ws);
 
 	  userAgent = new SIP.UA({
 	  uri: uri,
@@ -9833,13 +9834,13 @@ UA.prototype.loadConfig = function(configuration) {
       case 'uri':
       case 'registrarServer':
       case 'mediaHandlerFactory':
-        this.logger.log('· ' + parameter + ': ' + settings[parameter]);
+        this.logger.log('ï¿½ ' + parameter + ': ' + settings[parameter]);
         break;
       case 'password':
-        this.logger.log('· ' + parameter + ': ' + 'NOT SHOWN');
+        this.logger.log('ï¿½ ' + parameter + ': ' + 'NOT SHOWN');
         break;
       default:
-        this.logger.log('· ' + parameter + ': ' + JSON.stringify(settings[parameter]));
+        this.logger.log('ï¿½ ' + parameter + ': ' + JSON.stringify(settings[parameter]));
     }
   }
 
