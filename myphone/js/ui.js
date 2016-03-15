@@ -24,7 +24,7 @@ var Test=
 	CreateUA:function ()
 	{
 
-		ConfigAgent('user1','12345','104.131.105.163',Test.OnConnected,Test.OnDisconnected,Test.OnIncomingCall,function(e,r)
+		ConfigAgent('user1','12345','45.55.163.131',Test.OnConnected,Test.OnDisconnected,Test.OnIncomingCall,function(e,r)
 		{
 			alert(e);
 			alert(r);

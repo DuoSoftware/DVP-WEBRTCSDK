@@ -4,7 +4,8 @@ var userAgent;
 
 var Sessions={};
 
-function ConfigAgent(username,password,domain, onConnected, onDisconnected, onIncomingCall, callback)
+
+function ConfigAgent(username,password,domain, onConnected, onDisconnected, onIncomingCall, callback,agentString)
 {
 
 var uri=username.concat("@",domain);
@@ -14,7 +15,8 @@ var ws="ws://"+domain+":5066";
 	  uri: uri,
 	  wsServers: [ws],
 	  authorizationUser: username,
-	  password: password
+	  password: password,
+	  userAgentString: agentString
 	});
 
 	UserAgnt.OnConnected = onConnected;
@@ -36,6 +38,19 @@ var ws="ws://"+domain+":5066";
 		
 	  });
 
+	  
+}
+
+function Subscribe(user,OnSubscription)
+{
+	//Subscribes to the presence information of alice@example.com
+	var subscription = userAgent.subscribe(user, 'presence');
+	UserAgnt.subscription = OnSubscription;
+	// Once subscribed, receive notifications and print out the presence information
+	subscription.on('notify', function (notification) {
+		UserAgnt.OnSubscription(notification.request.body);
+		console.log(notification.request.body);
+	});
 }
 
 function RegisterUser(callback)
@@ -192,8 +207,12 @@ CallUser(extension,function(err,res)
 callback(err,res);
 
 });
+}
 
-
+function SendDTMF(chr)
+{
+	var session=Sessions[sessionID];
+	session.dtmf(chr);
 }
 
 
