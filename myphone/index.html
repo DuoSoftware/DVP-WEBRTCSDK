@@ -4,17 +4,69 @@
   </head>
   
   <body>
-  <script src="download/sip-0.7.0.js"></script>
+  
     <script src="js/SDK.js"></script>
 	<script src="js/ui.js"></script>
 	
+	<div id="reg">
+	<table style="width:100%">
+  <tr>
+     <td height =20px>
+	 <div id=txtConnection >Disconnected</div></td>
+	 <td height =20px>
+	 <div id=txtReg >Unegisterd</div></td>
+	 <td height =20px>
+	 <div id=txtCallStatus >Ready</div></td>
+	 
+	 
+	 
+  <tr>
+    <td height =20px></td>
+  </tr>
+    <td>Username   <input type="text" name="FirstName" value="" id="txt_usr"></td>
+  </tr>
+  <tr>
+    <td height =20px></td>
+  </tr>
+  <tr>
+  <td>Password    <input type="text" name="Password" value="" id="txt_pwd"></td> 
+  </tr>
+  <tr>
+    <td height =20px></td>
+  </tr>
+  <tr>
+  <td>WsServer   <select id="slct_ws">
+  <option value="wss">wss</option>
+  <option value="ws">ws</option>
+</select>
+<input type="text" name="Wsserver" value="" id="txt_ws"></td>
+  </tr>
+  <tr>
+    <td height =20px></td>
+  </tr>
+  
+  <td ><input type="button" value="Create" id="login_submit" onclick="Test.CreateUA()"/> <input type="button" value="Register" id="login_reg" onclick="Test.RegUA()"/></td>
+      
+      
+	
+	<td height = '110px' ></td>
+  </td>
+  
+</table>
+	</div>
 	<div>
-<input type="text" name="FirstName" value="" id="txt_001">
-<input type="button" value="Create" id="login_submit" onclick="Test.CreateUA();"/>
-<input type="button" value="Register" id="login_submit" onclick="Test.RegUA();"/>
-<button type="button" value="Call" onclick="Test.CallUsers();">CAll</button>
-<button type="button" value="Answer" onclick="Test.AnswerCall();">Answer</button>
+	
+	
+
+
+
+Dial User here <input type="text" name="Caller" value="" id="txt_calluser">
+
+
+<button type="button" value="Call" onclick="Test.CallUsers('true');">Call</button>
+<button type="button" value="Answer" onclick="Test.AnswerCall('true');">Answer</button>
 <button type="button" value="END" onclick="Test.EndCalls();">END</button>
+
 
 <p id="demo"></p>
 
